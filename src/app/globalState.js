@@ -44,7 +44,6 @@ const rootReducer = (state = initialState, action) => {
             }
 
         case "SET_PRICE_RANGE":
-            console.log(" action Max Price: ", action.maxPrice)
             return {
                 ...state,
                 maxPrice: action.maxPrice,
