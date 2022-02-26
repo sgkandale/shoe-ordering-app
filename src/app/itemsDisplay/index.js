@@ -52,7 +52,7 @@ export default function ItemsDisplay() {
         }
 
 
-    }, [filters, itemsOrder, maxPrice, filterSizes])
+    }, [filters, itemsOrder, maxPrice, filterSizes, shoes])
 
     const renderItem = () => {
         if (itemsList.length === 0) {

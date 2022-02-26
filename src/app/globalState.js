@@ -1,5 +1,5 @@
 import { createStore } from "redux";
-import { shoesData, shoeSizes } from "./rawData";
+import { shoesData } from "./rawData";
 
 var initialState = {
     shoes: shoesData,
