@@ -1,0 +1,28 @@
+.items-display {
+    margin: 100px 50px 0 350px;
+}
+
+.items-display-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.no-matching-items {
+    font-size: 20px;
+    color: #D3D3D3;
+    margin: 0 0 20px 0;
+}
+
+.items-display-sort-select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;       
+    background-color: #fff;
+    width: 150px;
+    padding: 5px;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    font-size: 16px;
+}
