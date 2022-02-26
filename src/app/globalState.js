@@ -9,12 +9,8 @@ var initialState = {
         laceUpShoes: false,
         shoeAccessories: false,
     },
-    priceRange: {
-        min: 0,
-        max: 1000,
-    },
-    sizes: shoeSizes,
-    maxPrice: 990,
+    maxPrice: 1500,
+    filterSizes: [],
 }
 
 const rootReducer = (state = initialState, action) => {
@@ -29,18 +25,16 @@ const rootReducer = (state = initialState, action) => {
                 }
             }
 
-        case "SET_SIZE_FILTER":
+        case "ADD_SIZE_FILTER":
             return {
                 ...state,
-                sizes: state.sizes.map(size => {
-                    if (size.size === action.size) {
-                        return {
-                            ...size,
-                            active: !size.active,
-                        }
-                    }
-                    return size
-                })
+                filterSizes: [...state.filterSizes, action.size],
+            }
+
+        case "REMOVE_SIZE_FILTER":
+            return {
+                ...state,
+                filterSizes: state.filterSizes.filter(size => size !== action.size),
             }
 
         case "SET_PRICE_RANGE":
