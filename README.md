@@ -2,4 +2,4 @@ Shoe Ordering App
 
 Built with React
 
-Demo - [https://shoe-ordering-app.netlify.com](https://shoe-ordering-app.netlify.com)
+Demo - [Netlify](https://romantic-agnesi-825ff3.netlify.app)
