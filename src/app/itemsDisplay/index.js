@@ -10,6 +10,7 @@ export default function ItemsDisplay() {
     const shoes = useSelector(state => state.shoes)
     const filters = useSelector(state => state.filters)
     const maxPrice = useSelector(state => state.maxPrice)
+    const filterSizes = useSelector(state => state.filterSizes)
     const [itemsOrder, setItemsOrder] = useState('')
 
     useEffect(() => {
@@ -34,10 +35,24 @@ export default function ItemsDisplay() {
             shoesToState.sort((a, b) => a.price - b.price)
         }
 
-        setItemsList(shoesToState.filter(item => item.price <= maxPrice))
+        shoesToState = shoesToState.filter(item => item.price <= maxPrice)
 
-        setItemsList(shoesToState)
-    }, [filters, itemsOrder, maxPrice])
+        if (filterSizes.length > 0) {
+            let newShoesToState = []
+            for (let i = 0; i < shoesToState.length; i++) {
+                for (let j = 0; j < filterSizes.length; j++) {
+                    if (shoesToState[i].availableSizes.includes(filterSizes[j])) {
+                        newShoesToState = [...newShoesToState, shoesToState[i]]
+                    }
+                }
+            }
+            setItemsList(newShoesToState)
+        } else {
+            setItemsList(shoesToState)
+        }
+
+
+    }, [filters, itemsOrder, maxPrice, filterSizes])
 
     const renderItem = () => {
         if (itemsList.length === 0) {
