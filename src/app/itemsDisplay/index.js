@@ -10,7 +10,6 @@ export default function ItemsDisplay() {
     const shoes = useSelector(state => state.shoes)
     const filters = useSelector(state => state.filters)
     const maxPrice = useSelector(state => state.maxPrice)
-    console.log("Max Price: ", maxPrice)
     const [itemsOrder, setItemsOrder] = useState('')
 
     useEffect(() => {
@@ -29,20 +28,16 @@ export default function ItemsDisplay() {
             shoesToState = shoesToState.concat(shoes.filter(item => item.category === 'Shoe Accessories'))
         }
 
-        setItemsList(shoesToState)
-    }, [filters])
-
-    useEffect(() => {
         if (itemsOrder === 'desc') {
-            setItemsList(itemsList.sort((a, b) => a.price - b.price))
-        } else {
-            setItemsList(itemsList.sort((a, b) => b.price - a.price))
+            shoesToState.sort((a, b) => b.price - a.price)
+        } else if (itemsOrder === 'asc') {
+            shoesToState.sort((a, b) => a.price - b.price)
         }
-    }, [itemsOrder])
 
-    useEffect(() => {
-        setItemsList(itemsList.filter(item => item.price <= maxPrice))
-    }, [maxPrice])
+        setItemsList(shoesToState.filter(item => item.price <= maxPrice))
+
+        setItemsList(shoesToState)
+    }, [filters, itemsOrder, maxPrice])
 
     const renderItem = () => {
         if (itemsList.length === 0) {
